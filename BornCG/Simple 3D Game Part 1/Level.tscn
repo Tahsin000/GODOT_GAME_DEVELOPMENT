@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 25, 0.5, 25 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 50, 1, 50 )
+
+[node name="Level" type="Spatial"]
+
+[node name="Box1" type="RigidBody" parent="."]
+transform = Transform( 0.834742, -0.47887, -0.271826, 0.550641, 0.725941, 0.412073, 0, -0.493654, 0.869659, -2.12028, 13.9109, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Box1"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box1"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../CollisionShape")
+material/0 = null
+
+[node name="Box2" type="RigidBody" parent="."]
+transform = Transform( 0.834742, -0.47887, -0.271826, 0.203437, 0.726929, -0.655887, 0.511682, 0.492197, 0.704218, 0, 17.9819, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Box2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box2"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../CollisionShape")
+material/0 = null
+
+[node name="Box3" type="RigidBody" parent="."]
+transform = Transform( 0.834742, -0.47887, -0.271826, 0.203437, 0.726929, -0.655887, 0.511682, 0.492197, 0.704218, 0, 9.01759, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Box3"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box3"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../CollisionShape")
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.261294, -0.204221, 0.943408, -0.0957231, 0.967063, 0.235854, -0.960501, -0.151933, 0.233139, 13.241, 12.8678, 1.39165 )
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+mesh = SubResource( 4 )
+skeleton = NodePath("../CollisionShape")
+material/0 = null
