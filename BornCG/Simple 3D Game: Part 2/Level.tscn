@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/steve.tscn" type="PackedScene" id=1]
+[ext_resource path="res://script/steve.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 25, 0.5, 25 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 50, 1, 50 )
+
+[node name="Level" type="Spatial"]
+
+[node name="Box1" type="RigidBody" parent="."]
+transform = Transform( 0.834742, -0.47887, -0.271826, 0.550641, 0.725941, 0.412073, 0, -0.493654, 0.869659, -2.12028, 13.9109, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Box1"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Box1"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../CollisionShape")
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.041784, -0.441716, 0.896181, 0.000680391, 0.896952, 0.442128, -0.999126, 0.0190836, -0.0371777, 22.8499, 13.597, 0.641495 )
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+mesh = SubResource( 4 )
+skeleton = NodePath("../CollisionShape")
+material/0 = null
+
+[node name="KinematicBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.82826, 0 )
+script = ExtResource( 2 )
